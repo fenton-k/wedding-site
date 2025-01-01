@@ -18,6 +18,7 @@ FONT SIZE SYSTEM (px)
   --darker-main-color: #f08c00;
   --light-grey: #f1f3f5;
   --grey: #343a40;
+  --black: #333333;
 }
 
 .headline-text {
@@ -26,15 +27,15 @@ FONT SIZE SYSTEM (px)
 
 /* 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98 */
 
-h1 {
+.names {
   /* text-align: center; */
   font-size: 52px;
-  color: var(--grey);
+  color: var(--black);
 }
 
-h2 {
+.date {
   font-weight: 400;
-  color: var(--grey);
+  color: var(--black);
 }
 
 nav {
@@ -42,8 +43,6 @@ nav {
   flex-direction: column;
   gap: 20px;
   justify-content: center;
-  /* align-items: center; */
-
   margin: 20px;
   display: none;
 }
@@ -52,13 +51,10 @@ nav a {
   text-transform: uppercase;
   text-decoration: none;
   color: var(--main-color);
-  /* align-self: center; */
-  /* height: 100%; */
   font-weight: 700;
   text-align: center;
   border-radius: 20px;
   padding: 10px;
-
   background-color: var(--grey);
 }
 
@@ -66,9 +62,7 @@ nav a {
   /* position: absolute; */
   background-image: url(img/beach.jpg);
   background-position: 85% 35%;
-  /* width: 500px; */
   height: 600px;
-  /* background-repeat: no-repeat; */
   background-size: 150%;
 }
 
@@ -76,7 +70,7 @@ nav a {
   margin: 50px 30px 0 30px;
   text-align: center;
   font-weight: 700;
-  color: black;
+  color: var(--black);
   font-size: 20px;
 }
 
@@ -96,7 +90,6 @@ nav a {
   text-decoration: none;
   text-align: center;
   font-weight: 900;
-  font-size: 18px;
   box-shadow: 0 2px 5px rgb(20, 20, 20, 0.2);
 }
 
@@ -111,6 +104,7 @@ nav a {
 
 .secondary {
   font-weight: 500px;
+  font-size: 18px;
   background-color: var(--light-grey);
   color: var(--darker-main-color);
 }
@@ -119,6 +113,8 @@ nav a {
   text-align: center;
   margin: 80px 20px 80px 20px;
   font-size: 20px;
+  color: var(--black);
+  font-weight: 700;
 }
 
 .email,
@@ -128,8 +124,37 @@ nav a {
 
 .footer {
   background-color: var(--darker-main-color);
-  color: #141414;
+  color: var(--black);
   margin-top: 50px;
   padding: 30px 20px;
-  font-weight: 600;
+  font-weight: 500;
+}
+
+@media (width >= 600px) {
+  .headline {
+    height: 800px;
+    background-position: 80% 45%;
+    background-size: cover;
+  }
+
+  .names {
+    font-size: 86px;
+  }
+
+  .date {
+    font-size: 62px;
+  }
+
+  .div-buttons {
+    width: 500px;
+    margin: 50px auto !important;
+  }
+
+  .secondary {
+    font-size: 24px;
+  }
+
+  .rsvp {
+    font-size: 62px;
+  }
 }
