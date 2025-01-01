@@ -68,7 +68,7 @@ nav a {
   background-position: 85% 35%;
   /* width: 500px; */
   height: 600px;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   background-size: 150%;
 }
 
@@ -96,7 +96,7 @@ nav a {
   text-decoration: none;
   text-align: center;
   font-weight: 900;
-  font-size: 24px;
+  font-size: 18px;
   box-shadow: 0 2px 5px rgb(20, 20, 20, 0.2);
 }
 
@@ -117,7 +117,8 @@ nav a {
 
 .contact {
   text-align: center;
-  margin: 50px;
+  margin: 80px 20px 80px 20px;
+  font-size: 20px;
 }
 
 .email,
