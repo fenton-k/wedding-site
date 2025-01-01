@@ -1,0 +1,134 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Quicksand", sans-serif;
+}
+
+/*
+
+SPACING SYSTEM (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+FONT SIZE SYSTEM (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+ */
+
+:root {
+  --main-color: #fcc419;
+  --darker-main-color: #f08c00;
+  --light-grey: #f1f3f5;
+  --grey: #343a40;
+}
+
+.headline-text {
+  padding: 20px 20px 0 20px;
+}
+
+/* 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98 */
+
+h1 {
+  /* text-align: center; */
+  font-size: 52px;
+  color: var(--grey);
+}
+
+h2 {
+  font-weight: 400;
+  color: var(--grey);
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  /* align-items: center; */
+
+  margin: 20px;
+  display: none;
+}
+
+nav a {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--main-color);
+  /* align-self: center; */
+  /* height: 100%; */
+  font-weight: 700;
+  text-align: center;
+  border-radius: 20px;
+  padding: 10px;
+
+  background-color: var(--grey);
+}
+
+.headline {
+  /* position: absolute; */
+  background-image: url(img/beach.jpg);
+  background-position: 85% 35%;
+  /* width: 500px; */
+  height: 600px;
+  background-repeat: no-repeat;
+  background-size: 150%;
+}
+
+.sub-headline {
+  margin: 50px 30px 0 30px;
+  text-align: center;
+  font-weight: 700;
+  color: black;
+  font-size: 20px;
+}
+
+.div-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  flex-direction: column;
+  align-items: center;
+  /* margin: 20px 20px 20px 50px; */
+  margin: 50px 30px 0 30px;
+  gap: 20px;
+}
+
+.div-buttons a {
+  padding: 10px;
+  border-radius: 30px;
+  text-decoration: none;
+  text-align: center;
+  font-weight: 900;
+  font-size: 24px;
+  box-shadow: 0 2px 5px rgb(20, 20, 20, 0.2);
+}
+
+.rsvp {
+  grid-column: span 3;
+  background-color: var(--darker-main-color);
+  color: var(--light-grey);
+  font-size: 36px;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgb(20, 20, 20, 0.6);
+}
+
+.secondary {
+  font-weight: 500px;
+  background-color: var(--light-grey);
+  color: var(--darker-main-color);
+}
+
+.contact {
+  text-align: center;
+  margin: 50px;
+}
+
+.email,
+.email:link .email:visited {
+  color: var(--darker-main-color);
+}
+
+.footer {
+  background-color: var(--darker-main-color);
+  color: #141414;
+  margin-top: 50px;
+  padding: 30px 20px;
+  font-weight: 600;
+}
