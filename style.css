@@ -23,7 +23,7 @@ FONT SIZE SYSTEM (px)
 
 body {
   display: flex;
-  min-height: 100vw;
+  /* min-height: 100vw; */
   flex-direction: column;
   /* justify-content: space-around; */
 }
