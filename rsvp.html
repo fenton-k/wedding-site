@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RSVP</title>
+    <!-- google fonts -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/07a4aea74d.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="scripts.js"></script>
+  </head>
+  <body>
+    <h1 class="mainline">Sophie + Fenton</h1>
+    <div class="navbar">
+      <a class="nav-btn nav-sec" href="index.html">Home</a>
+      <a class="nav-btn nav-sec" href="#">Registry</a>
+      <a class="nav-btn nav-sec" href="travel.html">Travel</a>
+      <a class="nav-btn nav-sec" href="#">FAQ</a>
+      <!-- <a class="nav-btn nav-prim" href="#">RSVP</a> -->
+    </div>
+    <section class="section-subpage">
+      <h2 class="h2-subpage"><i class="fa-solid fa-envelope"></i> RSVP</h2>
+      <p class="travel-text">
+        Please enter your information below to accept or decline your
+        invitation.
+      </p>
+      <form class="rsvp-form" name="rsvpForm">
+        <div>
+          <label>First name</label>
+          <input class="text-input" name="firstName" />
+        </div>
+        <div>
+          <label>Last name</label>
+          <input class="text-input" name="lastName" />
+        </div>
+        <div>
+          <label>Zip code</label>
+          <input class="text-input" name="zipcode" />
+        </div>
+        <button class="rsvp-submit" type="button" onclick="rsvpSubmit()">
+          <p>Submit</p>
+        </button>
+      </form>
+    </section>
+  </body>
+</html>
