@@ -114,7 +114,7 @@ nav a {
 .contact {
   text-align: center;
   margin: 80px 20px 80px 20px;
-  font-size: 20px;
+  font-size: 30px;
   color: var(--black);
   font-weight: 700;
 }
@@ -122,6 +122,7 @@ nav a {
 .email,
 .email:link .email:visited {
   color: var(--darker-main-color);
+  font-size: 20px;
 }
 
 .footer {
