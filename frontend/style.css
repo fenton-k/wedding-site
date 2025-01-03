@@ -293,9 +293,6 @@ nav a {
 
 /* RSVP page */ /* RSVP form */
 
-#rsvpFormSection {
-}
-
 .rsvp-form {
   display: flex;
   flex-direction: column;

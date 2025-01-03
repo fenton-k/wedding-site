@@ -66,12 +66,19 @@ function rsvpCollect(tone) {
   const plusOneSec = document.getElementById("plusOneFormSection");
   if (!tone && plusOneSec) {
     plusOneSec.style.display = "None";
+  }
 
-    // remove enabled style
-    let btn = document.getElementById("btnRsvpYes");
-    console.log(btn);
-    btn.classList.remove("btn-selected");
-    // btnRsvpYes;
+  if (!tone) {
+    document.getElementById("btnRsvpNo").classList.add("btn-selected");
+    document.getElementById("btnRsvpYes").classList.remove("btn-selected");
+  }
+
+  // if user doesn't have a plus one, selected no, then selects yes
+  if (
+    !guestJSON["plusOne"] &&
+    document.getElementById("btnRsvpNo").classList.contains("btn-selected")
+  ) {
+    flipButtons("btnRsvpYes", "btnRsvpNo");
   }
 
   // check if rsvpCollect has already been added
@@ -85,7 +92,8 @@ function rsvpCollect(tone) {
   }
 
   // add enabled style
-  document.getElementById("btnRsvpNo").classList.add("btn-selected");
+
+  // document.getElementById("btnRsvpNo").classList.add("btn-selected");
 
   const headingMsg = tone
     ? "We can't wait to see you!"
@@ -194,4 +202,17 @@ function rsvpConfirm(attending) {
   // console.log(guestJSON);
 
   // redirect to home page
+}
+
+function flipButtons(btn1, btn2) {
+  btn1 = document.getElementById(btn1);
+  btn2 = document.getElementById(btn2);
+
+  if (btn1.classList.contains("btn-selected")) {
+    btn1.classList.remove("btn-selected");
+    btn2.classList.add("btn-selected");
+  } else if (btn2.classList.contains("btn-selected")) {
+    btn1.classList.add("btn-selected");
+    btn2.classList.remove("btn-selected");
+  }
 }
