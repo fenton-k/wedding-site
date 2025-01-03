@@ -36,6 +36,7 @@ def edit(string):
     variables = string.split('+')
     guest_id = int(variables[0])
     plus_one = variables[1]
+    attending = int(variables[2])
   
   except: 
      return error_message
@@ -43,7 +44,9 @@ def edit(string):
   guest_json = get_guest_json(guest_id=guest_id)
 
   # edit the json to reflect the plus ones
-  guest_json['plusOne'] = plus_one
+  if guest_json['plusOne']: # make sure guest has plus one to add
+    guest_json['plusOne'] = plus_one
+  guest_json['attending'] = attending
 
   # save the json to back to the csv
   update_csv(guest_json)
@@ -87,6 +90,7 @@ def get_json_from_row(row):
    guest_json['lastName'] = row[2]
    guest_json['zipcode'] = row[3]
    guest_json['plusOne'] = row[4]
+   guest_json['attending'] = row[5]
 
    return guest_json
 
@@ -97,7 +101,7 @@ def update_csv(guest_json):
    tempfile = NamedTemporaryFile(mode='w', delete=False)
    
    # would rather grab these automatically
-   fields = ['guestID','firstName','lastName','zipcode','plusOne']
+   fields = ['guestID','firstName','lastName','zipcode','plusOne', 'attending']
 
    with open(filename, 'r') as csvfile, tempfile:
       reader = csv.DictReader(csvfile, fieldnames=fields)
@@ -109,6 +113,7 @@ def update_csv(guest_json):
          if row['guestID'] == guest_json['guestID']:
             print(f"updating row {row['guestID']}")
             row['plusOne'] = guest_json['plusOne']
+            row['attending'] = guest_json['attending'] 
          
             row = {}
             for field in fields:

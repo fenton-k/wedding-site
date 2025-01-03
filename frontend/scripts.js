@@ -1,3 +1,5 @@
+var guestJSON;
+
 function rsvpSubmit() {
   const firstName = rsvpForm.firstName.value;
   const lastName = rsvpForm.lastName.value;
@@ -8,20 +10,32 @@ function rsvpSubmit() {
 
   const url = baseUrl + searchString;
 
-  const guestJSON = getData(url);
+  getData(url, 1);
 }
 
 function rsvpYes(plusOne) {
-  if (document.getElementById("plusOneFormSection")) {
-    console.log("already added. Do not add again");
-    return 0;
+  let plusOneSec = document.getElementById("plusOneFormSection");
+  if (plusOneSec) {
+    console.log(
+      "already added plusOneSec. removing existing verison and re-adding."
+    );
+    plusOneSec.remove();
   }
 
-  // disable rsvp buttons and change style
-  let btn = document.getElementById("btnRsvpYes");
-  btn.classList.add("btn-selected");
+  // set yes button to enabled
+  document.getElementById("btnRsvpYes").classList.add("btn-selected");
+
+  // if we hit no and then hit yes, remove rsvpCollect and switch buttons
+  const rsvpCollectSec = document.getElementById("rsvpCollect");
+
+  if (rsvpCollectSec) {
+    console.log("switched from no to yes. removing rsvpCollect");
+    rsvpCollectSec.remove();
+  }
+
   btn = document.getElementById("btnRsvpNo");
-  btn.classList.add("btn-disabled");
+  btn.classList.remove("btn-selected");
+
   let plusOneSection = "";
 
   if (plusOne) {
@@ -36,7 +50,7 @@ function rsvpYes(plusOne) {
   } else {
     // do not offer this guest the choice to add a plus one
     // move on to next section (submit rsvp button)
-    rsvpCollect();
+    rsvpCollect(1);
   }
 
   // add thhe new element and scroll
@@ -45,41 +59,77 @@ function rsvpYes(plusOne) {
   // pageScroll();
 }
 
-function rsvpCollect() {
-  const rsvpCollectFormSection = `    <section class="section-subpage">
-      <h2 class="h2-subpage">We can't wait to see you!</h2>
-      <p>
-        Click the button below to confirm your RSVP. Don't worry, you can always
-        return here to update your choices if anything changes.
-      </p>
-      <form class="rsvp-collect">
-        <button class="rsvp-submit">Confirm RSVP</button>
-      </form>
-    </section>`;
+// if tone == 0, it is sad tone, because they cannot attend
+// else, it is happy tone, because they can.
+function rsvpCollect(tone) {
+  // in case user hits yes then no
+  const plusOneSec = document.getElementById("plusOneFormSection");
+  if (!tone && plusOneSec) {
+    plusOneSec.style.display = "None";
+
+    // remove enabled style
+    let btn = document.getElementById("btnRsvpYes");
+    console.log(btn);
+    btn.classList.remove("btn-selected");
+    // btnRsvpYes;
+  }
+
+  // check if rsvpCollect has already been added
+  const rsvpCollectSec = document.getElementById("rsvpCollect");
+
+  if (rsvpCollectSec) {
+    console.log(
+      "already added rsvpCollect. removing existing verison and re-adding."
+    );
+    rsvpCollectSec.remove();
+  }
+
+  // add enabled style
+  document.getElementById("btnRsvpNo").classList.add("btn-selected");
+
+  const headingMsg = tone
+    ? "We can't wait to see you!"
+    : "We are sorry to miss you.";
+
+  const rsvpCollectFormSection = `      <section class="section-subpage" id="rsvpCollect">
+        <h2 class="h2-subpage">${headingMsg}</h2>
+        <p>
+          Click below to confirm your RSVP. Don't worry, you can
+          always return here to update your choices if anything changes.
+        </p>
+        <form class="rsvp-collect">
+          <button class="rsvp-submit" onclick="rsvpConfirm(${tone})" type="button">
+            Confirm RSVP
+          </button>
+        </form>
+      </section>`;
 
   div = document.getElementById("div-rsvp-content");
   div.insertAdjacentHTML("beforeend", rsvpCollectFormSection);
 }
 
-async function getData(url) {
+async function getData(url, iteration) {
   try {
     const response = await fetch(url);
     if (!response.ok) {
       throw new Error(`response status: ${response.status}`);
     }
 
-    const json = await response.json();
+    if (iteration == 1) {
+      guestJSON = await response.json();
+    }
 
-    if (isEmpty(json)) {
+    if (isEmpty(guestJSON)) {
       window.alert(
         "Sorry, I can't find your invitation. Are you sure you were invited?"
       );
     } else {
-      div = document.getElementById("rsvpFormSection");
-      div.style.display = "None";
-      console.log(div);
-      console.log(json);
-      addWelcomeSection(json["firstName"], json["plusOne"]);
+      if (iteration == 1) {
+        div = document.getElementById("rsvpFormSection");
+        div.style.display = "None";
+        console.log("hidding rsvpform");
+        addWelcomeSection(guestJSON["firstName"], guestJSON["plusOne"]);
+      }
     }
   } catch (error) {
     console.error(error.message);
@@ -108,7 +158,7 @@ function addWelcomeSection(name, plusOne) {
       <p class="travel-text">Will you be attending our wedding?</p>
       <form class="welcome-form" name="welcome-form">
         <button id="btnRsvpYes" class="btn-welcome" type="button" onclick="rsvpYes(${plusOne})">Yes</button>
-        <button id="btnRsvpNo" class="btn-welcome" type="button">No</button>
+        <button id="btnRsvpNo" class="btn-welcome" type="button" onclick="rsvpCollect(0)">No</button>
       </form>
     </section>`;
   div.insertAdjacentHTML("beforeend", welcomeSection);
@@ -122,7 +172,26 @@ function pageScroll() {
   scrolldelay = setTimeout(pageScroll, 12);
 }
 
-function removeHeader() {
-  console.log("lol!");
-  console.log(document.getElementById("pnlRegistryWelcome"));
+//
+
+function rsvpConfirm(attending) {
+  // send update to api
+  const baseUrl = "https://mikipapa.pythonanywhere.com/edit/";
+  // const baseUrl = "http://127.0.0.1:5000/edit/";
+
+  // clear the plusOne if the guest is decling to attend
+  let plusOne = 0 ? !tone : guestJSON["plusOne"];
+
+  const searchString = `${guestJSON["guestID"]}+${"0"}+${attending}`;
+
+  const url = baseUrl + searchString;
+
+  getData(url, 2);
+
+  // setTimeout(window.location.replace("index.html"), 1000);
+
+  // const guestJSON = getData(url);
+  // console.log(guestJSON);
+
+  // redirect to home page
 }
