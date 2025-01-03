@@ -121,3 +121,8 @@ function pageScroll() {
   window.scrollBy(0, 7);
   scrolldelay = setTimeout(pageScroll, 12);
 }
+
+function removeHeader() {
+  console.log("lol!");
+  console.log(document.getElementById("pnlRegistryWelcome"));
+}
