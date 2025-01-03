@@ -4,7 +4,7 @@ function rsvpSubmit() {
   const zipcode = rsvpForm.zipcode.value;
 
   const searchString = firstName + "+" + lastName + "+" + zipcode;
-  const baseUrl = "http://127.0.0.1:5000/search/";
+  const baseUrl = "https://mikipapa.pythonanywhere.com/search/";
 
   const url = baseUrl + searchString;
 
