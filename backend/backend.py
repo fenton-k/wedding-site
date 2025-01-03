@@ -51,7 +51,7 @@ def edit(string):
   return guest_json
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
 
 # search through the csv file to find guest based  
 # on firstname, lastname, and zipcode.
