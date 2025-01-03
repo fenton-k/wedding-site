@@ -70,6 +70,9 @@ async function getData(url) {
         "Sorry, I can't find your invitation. Are you sure you were invited?"
       );
     } else {
+      div = document.getElementById("rsvpFormSection");
+      div.style.display = "None";
+      console.log(div);
       console.log(json);
       addWelcomeSection(json["firstName"], json["plusOne"]);
     }
