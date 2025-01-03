@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Registry</title>
+
+    <!-- google fonts -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/07a4aea74d.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="scripts.js"></script>
+  </head>
+  <body>
+    <h1 class="mainline">Sophie + Fenton</h1>
+    <div class="navbar">
+      <a class="nav-btn nav-sec" href="../frontend">Home</a>
+      <!-- <a class="nav-btn nav-sec" href="registry">Registry</a> -->
+      <a class="nav-btn nav-sec" href="travel">Travel</a>
+      <a class="nav-btn nav-sec" href="faq">FAQ</a>
+      <a class="nav-btn nav-prim" href="rsvp">RSVP</a>
+    </div>
+    <br />
+    <script
+      id="script_myregistry_giftlist_iframe"
+      type="text/javascript"
+      src="//www.myregistry.com//Visitors/GiftList/iFrames/EmbedRegistry.ashx?r=NzbrnvjakviasavM_FYhng2&v=2"
+    ></script>
+  </body>
+</html>

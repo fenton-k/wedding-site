@@ -33,10 +33,20 @@ FONT SIZE SYSTEM (px)
 }
 
 body {
-  display: flex;
+  display: grid;
+  min-height: 100vh;
   /* min-height: 100vw; */
-  flex-direction: column;
+  grid-template-rows: auto 1fr auto;
+  align-items: start;
   /* justify-content: space-around; */
+}
+
+header {
+  min-height: 100px;
+}
+
+footer {
+  min-height: 60px;
 }
 
 .names {
@@ -282,6 +292,10 @@ nav a {
 }
 
 /* RSVP page */ /* RSVP form */
+
+#rsvpFormSection {
+}
+
 .rsvp-form {
   display: flex;
   flex-direction: column;
@@ -317,12 +331,13 @@ nav a {
   margin-top: 20px;
   grid-column: span 2;
   /* height: 20px; */
-  border-radius: 20px;
+  border-radius: 30px;
   background-color: var(--darker-main-color);
-  border-color: var(--darker-main-color);
+  border-color: rgb(0, 0, 0, 0);
   font-size: 30px;
   color: var(--light-grey);
-  font-weight: 900;
+  box-shadow: 0 2px 5px rgb(20, 20, 20, 0.3);
+  font-weight: 800;
   padding: 10px 0;
 }
 
@@ -373,10 +388,43 @@ FONT SIZE SYSTEM (px)
 .btn-welcome {
   font-size: 30px;
   border-radius: 20px;
-  border-color: var(--light-grey);
-  box-shadow: 0 2px 5px rgb(20, 20, 20, 0.2);
+  border-color: rgb(0, 0, 0, 0);
+  box-shadow: 0 2px 5px rgb(20, 20, 20, 0.3);
+  font-weight: 800;
+
+  background-color: var(--light-grey);
+  color: var(--darker-main-color);
+}
+
+.btn-selected {
+  background-color: var(--darker-main-color);
+  color: var(--light-grey);
 }
 
 .rsvp-collect {
   display: grid;
+}
+
+/* faq page */
+
+.faq-grid {
+  display: grid;
+  margin: 20px 20px 0 20px;
+  /* grid-template-columns: repeat(2, 1fr); */
+  row-gap: 30px;
+  column-gap: 20px;
+}
+
+@media (width >= 600px) {
+  .faq-grid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 70px;
+  }
+}
+
+@media (width >= 1000px) {
+  .faq-grid {
+    margin-top: 40px;
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

@@ -17,6 +17,11 @@ function rsvpYes(plusOne) {
     return 0;
   }
 
+  // disable rsvp buttons and change style
+  let btn = document.getElementById("btnRsvpYes");
+  btn.classList.add("btn-selected");
+  btn = document.getElementById("btnRsvpNo");
+  btn.classList.add("btn-disabled");
   let plusOneSection = "";
 
   if (plusOne) {
@@ -35,7 +40,7 @@ function rsvpYes(plusOne) {
   }
 
   // add thhe new element and scroll
-  div = document.getElementById("body");
+  div = document.getElementById("div-rsvp-content");
   div.insertAdjacentHTML("beforeend", plusOneSection);
   // pageScroll();
 }
@@ -52,7 +57,7 @@ function rsvpCollect() {
       </form>
     </section>`;
 
-  div = document.getElementById("body");
+  div = document.getElementById("div-rsvp-content");
   div.insertAdjacentHTML("beforeend", rsvpCollectFormSection);
 }
 
@@ -96,14 +101,14 @@ function addWelcomeSection(name, plusOne) {
     return 0;
   }
 
-  div = document.getElementById("body");
+  div = document.getElementById("div-rsvp-content");
   welcomeSection = `
     <section class="section-subpage" id="welcome-section">
       <h2 class="h2-subpage">Welcome, ${name}!</h2>
       <p class="travel-text">Will you be attending our wedding?</p>
       <form class="welcome-form" name="welcome-form">
-        <button class="btn-welcome" type="button" onclick="rsvpYes(${plusOne})">Yes</button>
-        <button class="btn-welcome" type="button">No</button>
+        <button id="btnRsvpYes" class="btn-welcome" type="button" onclick="rsvpYes(${plusOne})">Yes</button>
+        <button id="btnRsvpNo" class="btn-welcome" type="button">No</button>
       </form>
     </section>`;
   div.insertAdjacentHTML("beforeend", welcomeSection);

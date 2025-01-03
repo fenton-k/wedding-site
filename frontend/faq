@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ</title>
+
+    <!-- google fonts -->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/07a4aea74d.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="travel-page">
+    <header>
+      <h1 class="mainline">Sophie + Fenton</h1>
+      <div class="navbar">
+        <a class="nav-btn nav-sec" href="../frontend">Home</a>
+        <a class="nav-btn nav-sec" href="registry">Registry</a>
+        <a class="nav-btn nav-sec" href="travel">Travel</a>
+        <!-- <a class="nav-btn nav-sec" href="#">FAQ</a> -->
+        <a class="nav-btn nav-prim" href="rsvp">RSVP</a>
+      </div>
+    </header>
+    <div class="faq-grid">
+      <card class="rsvp-card">
+        <h2>Can I bring a plus one?</h2>
+        <p>
+          If you have a plus one, you will be able to enter their name when you
+          RSVP. Your invitation will also say your name plus one.
+        </p>
+      </card>
+      <card
+        ><h2>What is the dress code?</h2>
+        <p>
+          We ask that you wear semi-formal attire such as a cocktail-length
+          dress or dressy separates for women and a suit and tie for men. Please
+          do not wear blue jeans or sneakers.
+        </p></card
+      >
+      <card class="rsvp-card"
+        ><h2>Will there be an open bar?</h2>
+        <p>Yes! Drink all night long!</p></card
+      >
+      <card class="rsvp-card"
+        ><h2>Will children be invited?</h2>
+        <p>Yes, there will be several children present!</p></card
+      >
+    </div>
+
+    <footer class="footer">
+      <p>copyright &copy 2025 Sophos Websites</p>
+    </footer>
+  </body>
+</html>
