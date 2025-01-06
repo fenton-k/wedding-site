@@ -6,7 +6,7 @@ function rsvpSubmit() {
   const zipcode = rsvpForm.zipcode.value;
 
   const searchString = firstName + "+" + lastName + "+" + zipcode;
-  const baseUrl = "https://mikipapa.pythonanywhere.com/search/";
+  const baseUrl = "https://mikipapa.pythonanywhere.com/wedding-api/search/";
 
   const url = baseUrl + searchString;
 
@@ -273,7 +273,7 @@ function pageScroll() {
 
 function rsvpConfirm(attending) {
   // send update to api
-  const baseUrl = "https://mikipapa.pythonanywhere.com/edit/";
+  const baseUrl = "https://mikipapa.pythonanywhere.com/wedding-api/edit/";
   // const baseUrl = "http://127.0.0.1:5000/edit/";
 
   // clear the plusOne if the guest is decling to attend
