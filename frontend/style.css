@@ -1,7 +1,7 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Instrument Serif";
   box-sizing: border-box;
 }
 
@@ -52,32 +52,15 @@ footer {
 .names {
   /* text-align: center; */
   font-size: 52px;
+  font-weight: 700;
+  letter-spacing: 1.3px;
   color: var(--black);
 }
 
 .date {
   font-weight: 400;
+  font-size: 36px;
   color: var(--black);
-}
-
-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  justify-content: center;
-  margin: 20px;
-  display: none;
-}
-
-nav a {
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--main-color);
-  font-weight: 700;
-  text-align: center;
-  border-radius: 20px;
-  padding: 10px;
-  background-color: var(--grey);
 }
 
 .headline {
@@ -89,12 +72,13 @@ nav a {
   padding: 20px 20px 0 20px;
 }
 
-.sub-headline {
+.sub-headline h2 {
   margin: 50px 30px 0 30px;
   text-align: center;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--black);
-  font-size: 20px;
+  font-size: 30px;
+  line-height: 1.5;
 }
 
 .div-buttons {
@@ -120,14 +104,14 @@ nav a {
   grid-column: span 3;
   background-color: var(--darker-main-color);
   color: var(--light-grey);
-  font-size: 36px;
+  font-size: 52px;
   font-weight: 600;
   box-shadow: 0 2px 5px rgb(20, 20, 20, 0.6);
 }
 
 .secondary {
   font-weight: 500px;
-  font-size: 18px;
+  font-size: 30px;
   background-color: var(--light-grey);
   color: var(--darker-main-color);
 }
@@ -135,9 +119,9 @@ nav a {
 .contact {
   text-align: center;
   margin: 80px 20px 80px 20px;
-  font-size: 30px;
+  font-size: 20px;
   color: var(--black);
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .email,
@@ -207,10 +191,12 @@ nav a {
 .nav-btn {
   text-decoration: none;
   text-transform: uppercase;
-  font-weight: 900;
+  font-weight: 700;
   padding: 10px;
-  border-radius: 30px;
+  font-size: 20px;
+  border-radius: 10px;
   box-shadow: 0 2px 5px rgb(20, 20, 20, 0.15);
+  letter-spacing: 1.2px;
 }
 
 .nav-prim {
@@ -259,6 +245,9 @@ nav a {
 .travel-text {
   /* margin: 40px 0 20px 0; */
   margin-bottom: 10px;
+  font-size: 1.4em;
+  letter-spacing: 0.9px;
+  font-weight: 500;
 }
 
 .travel-buttons {
