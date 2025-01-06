@@ -35,6 +35,8 @@ FONT SIZE SYSTEM (px)
 body {
   display: grid;
   min-height: 100vh;
+  /* max-width: 1400px; */
+  margin: 0 auto;
   /* min-height: 100vw; */
   grid-template-rows: auto 1fr auto;
   align-items: start;
