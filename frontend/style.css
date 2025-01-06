@@ -51,6 +51,12 @@ footer {
   min-height: 60px;
 }
 
+.travel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
 .names {
   /* text-align: center; */
   font-size: 52px;
