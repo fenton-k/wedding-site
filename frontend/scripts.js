@@ -41,10 +41,10 @@ function rsvpYes(plusOne) {
   if (plusOne) {
     plusOneSection = `<section class="section-subpage" id="plusOneFormSection">
       <h2 class="h2-subpage">Yay! Will you bring a plus one?</h2>
-      <p>Please select whether or not you will attend with a guest.</p>
+      <p class="travel-text">Please select whether or not you will attend with a guest.</p>
       <form class="welcome-form" name="welcome-form">
-        <button class="btn-welcome" type="button">Yes</button>
-        <button class="btn-welcome" type="button">No</button>
+        <button class="btn-welcome" id="btnPlusOneYes" type="button" onclick="plusOneCollect()">Yes</button>
+        <button class="btn-welcome" id="btnPlusOneNo" type="button" onclick="rsvpCollect(1, 1)">No</button>
       </form>
     </section>`;
   } else {
@@ -59,30 +59,116 @@ function rsvpYes(plusOne) {
   // pageScroll();
 }
 
+function plusOneCollect() {
+  // check if element is already added. If so, remove and continue
+  if (document.getElementById("plusOneEntrySection")) {
+    document.getElementById("plusOneEntrySection").remove();
+  }
+
+  if (document.getElementById("rsvpCollect")) {
+    document.getElementById("rsvpCollect").remove();
+  }
+
+  // if this is triggeded, user just hit yes. Remove selected from no button if applied, add selected to yes button
+  noBtn = document.getElementById("btnPlusOneNo");
+  try {
+    noBtn.classList.remove("btn-selected");
+  } catch {
+    console.log("no button was not selected");
+  }
+  yesBtn = document.getElementById("btnPlusOneYes");
+  yesBtn.classList.add("btn-selected");
+
+  // add form for user to enter plus one
+  plusOneEntry = `<section class="section-subpage" id="div-rsvp-content">
+      <section id="plusOneEntrySection">
+        <h2 class="h2-subpage">Who is joining you?</h2>
+        <form name="plusOneEntryForm">
+          <div style="display: flex; flex-direction: column">
+            <label>Your plus one's name</label>
+            <input id="plusOneNameInput" class="text-input" />
+          </div>
+          <button class="btn-review" type="button" onclick="confirmRSVP()">Review and submit</button>
+        </form>
+      </section>
+ `;
+
+  div = document.getElementById("div-rsvp-content");
+  div.insertAdjacentHTML("beforeend", plusOneEntry);
+}
+
+function confirmRSVP() {
+  //get updated plusOne info
+  guestJSON["plusOne"] = document.getElementById("plusOneNameInput").value;
+
+  // hide old forms
+  const plusOneSec = document.getElementById("plusOneFormSection");
+  plusOneSec.style.display = "None";
+
+  document.getElementById("plusOneEntrySection").style.display = "None";
+  document.getElementById("welcome-section").style.display = "none";
+
+  const confirmSec = `    <section id="div-rsvp-content" class="section-subpage">
+      <section id="confirmSection">
+        <h2 class="h2-subpage">Does everything look okay?</h2>
+        <p class="travel-text">
+          ${guestJSON["firstName"]} ${
+    guestJSON["lastName"]
+  } will attend on July 11th with their guest, ${capitalizeFirstLetter(
+    guestJSON["plusOne"]
+  )}.
+        </p>
+        <button class="rsvp-submit"
+        style="width: 100%; margin-bottom: 10px"
+        onclick="rsvpConfirm(1)">
+          Submit your RSVP
+        </button>
+        <p style="font-size: 18px">
+          Don't worry, you can always return to our website later to update your
+          information if needed.
+        </p>
+      </section>`;
+
+  div = document.getElementById("div-rsvp-content");
+  div.insertAdjacentHTML("beforeend", confirmSec);
+  // display all information and then allow user to submit
+}
+
 // if tone == 0, it is sad tone, because they cannot attend
 // else, it is happy tone, because they can.
-function rsvpCollect(tone) {
+function rsvpCollect(tone, plusOne) {
   // in case user hits yes then no
   const plusOneSec = document.getElementById("plusOneFormSection");
-  if (!tone && plusOneSec) {
+  if (!tone && plusOneSec && !plusOne) {
     plusOneSec.style.display = "None";
   }
 
-  if (!tone) {
-    document.getElementById("btnRsvpNo").classList.add("btn-selected");
-    document.getElementById("btnRsvpYes").classList.remove("btn-selected");
+  // select no btn
+  // unselect yes btn, if selected
+
+  if (!plusOne) {
+    let noBtn = document.getElementById("btnRsvpNo");
+    let yesBtn = document.getElementById("btnRsvpYes");
+
+    noBtn.classList.add("btn-selected");
+    if (yesBtn.classList.contains("btn-selected")) {
+      yesBtn.classList.remove("btn-selected");
+    }
   }
 
-  // if user doesn't have a plus one, selected no, then selects yes
-  if (
-    !guestJSON["plusOne"] &&
-    document.getElementById("btnRsvpNo").classList.contains("btn-selected")
-  ) {
-    flipButtons("btnRsvpYes", "btnRsvpNo");
+  if (plusOne) {
+    let yesBtn = document.getElementById("btnPlusOneYes");
+    let noBtn = document.getElementById("btnPlusOneNo");
+
+    noBtn.classList.add("btn-selected");
+    if (yesBtn.classList.contains("btn-selected")) {
+      yesBtn.classList.remove("btn-selected");
+    }
   }
 
   // check if rsvpCollect has already been added
   const rsvpCollectSec = document.getElementById("rsvpCollect");
+  const plusOneEntrySec = document.getElementById("plusOneEntrySection");
 
   if (rsvpCollectSec) {
     console.log(
@@ -90,10 +176,9 @@ function rsvpCollect(tone) {
     );
     rsvpCollectSec.remove();
   }
-
-  // add enabled style
-
-  // document.getElementById("btnRsvpNo").classList.add("btn-selected");
+  if (plusOneEntrySec) {
+    plusOneEntrySection.remove();
+  }
 
   const headingMsg = tone
     ? "We can't wait to see you!"
@@ -101,7 +186,7 @@ function rsvpCollect(tone) {
 
   const rsvpCollectFormSection = `      <section class="section-subpage" id="rsvpCollect">
         <h2 class="h2-subpage">${headingMsg}</h2>
-        <p>
+        <p class="travel-text">
           Click below to confirm your RSVP. Don't worry, you can
           always return here to update your choices if anything changes.
         </p>
@@ -153,6 +238,10 @@ function isEmpty(obj) {
   return true;
 }
 
+function capitalizeFirstLetter(val) {
+  return String(val).charAt(0).toUpperCase() + String(val).slice(1);
+}
+
 function addWelcomeSection(name, plusOne) {
   if (document.getElementById("welcome-section")) {
     console.log("already added. do not add again");
@@ -165,8 +254,8 @@ function addWelcomeSection(name, plusOne) {
       <h2 class="h2-subpage">Welcome, ${name}!</h2>
       <p class="travel-text">Will you be attending our wedding?</p>
       <form class="welcome-form" name="welcome-form">
-        <button id="btnRsvpYes" class="btn-welcome" type="button" onclick="rsvpYes(${plusOne})">Yes</button>
-        <button id="btnRsvpNo" class="btn-welcome" type="button" onclick="rsvpCollect(0)">No</button>
+        <button id="btnRsvpYes" class="btn-welcome" type="button" onclick="rsvpYes('${plusOne}')">Yes</button>
+        <button id="btnRsvpNo" class="btn-welcome" type="button" onclick="rsvpCollect(0, 0)">No</button>
       </form>
     </section>`;
   div.insertAdjacentHTML("beforeend", welcomeSection);
@@ -196,6 +285,7 @@ function rsvpConfirm(attending) {
 
   getData(url, 2);
 
+  window.location.replace("index.html");
   // setTimeout(window.location.replace("index.html"), 1000);
 
   // const guestJSON = getData(url);

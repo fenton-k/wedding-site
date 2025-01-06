@@ -106,6 +106,7 @@ footer {
   color: var(--light-grey);
   font-size: 52px;
   font-weight: 600;
+  letter-spacing: 5px;
   box-shadow: 0 2px 5px rgb(20, 20, 20, 0.6);
 }
 
@@ -169,17 +170,6 @@ footer {
   }
 }
 
-/* Our story page */
-
-.story-page {
-  background-color: var(--light-grey);
-}
-
-.story-page h1 {
-  font-weight: 900;
-  text-align: center;
-}
-
 .navbar {
   /* padding: 20px 0; */
   display: flex;
@@ -236,6 +226,29 @@ footer {
   font-size: 44px;
   margin-bottom: 10px;
   /* text-align: center; */
+}
+
+.welcome-form {
+  display: grid;
+  margin-top: 32px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+}
+
+.btn-welcome {
+  font-size: 30px;
+  border-radius: 20px;
+  border-color: rgb(0, 0, 0, 0);
+  box-shadow: 0 2px 5px rgb(20, 20, 20, 0.3);
+  font-weight: 800;
+
+  background-color: var(--light-grey);
+  color: var(--darker-main-color);
+}
+
+.btn-selected {
+  background-color: var(--darker-main-color);
+  color: var(--light-grey);
 }
 
 .section-subpage {
@@ -331,7 +344,7 @@ footer {
   display: grid;
 }
 
-.rsvp-form label {
+label {
   font-size: 24px;
   font-weight: 600;
 }
@@ -392,6 +405,25 @@ footer {
   }
 }
 
+#plusOneEntrySection {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.btn-review {
+  width: 100%;
+  margin-top: 20px;
+
+  border-radius: 30px;
+  background-color: var(--darker-main-color);
+  border-color: rgb(0, 0, 0, 0);
+  font-size: 30px;
+  color: var(--light-grey);
+  box-shadow: 0 2px 5px rgb(20, 20, 20, 0.3);
+  font-weight: 800;
+  padding: 10px 0;
+}
+
 /* welcome form on RSVP page */
 /*
 SPACING SYSTEM (px)
@@ -400,28 +432,6 @@ SPACING SYSTEM (px)
 FONT SIZE SYSTEM (px)
 10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
  */
-.welcome-form {
-  display: grid;
-  margin-top: 32px;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 50px;
-}
-
-.btn-welcome {
-  font-size: 30px;
-  border-radius: 20px;
-  border-color: rgb(0, 0, 0, 0);
-  box-shadow: 0 2px 5px rgb(20, 20, 20, 0.3);
-  font-weight: 800;
-
-  background-color: var(--light-grey);
-  color: var(--darker-main-color);
-}
-
-.btn-selected {
-  background-color: var(--darker-main-color);
-  color: var(--light-grey);
-}
 
 .rsvp-collect {
   display: grid;
