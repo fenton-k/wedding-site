@@ -188,9 +188,9 @@ function rsvpConfirm(attending) {
   // const baseUrl = "http://127.0.0.1:5000/edit/";
 
   // clear the plusOne if the guest is decling to attend
-  let plusOne = 0 ? !tone : guestJSON["plusOne"];
+  // let plusOne = 0 ? !tone : guestJSON["plusOne"];
 
-  const searchString = `${guestJSON["guestID"]}+${"0"}+${attending}`;
+  const searchString = `${guestJSON["guestID"]}+${guestJSON["plusOne"]}+${attending}`;
 
   const url = baseUrl + searchString;
 
