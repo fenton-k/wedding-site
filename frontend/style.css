@@ -245,18 +245,54 @@ footer {
 .travel-text {
   /* margin: 40px 0 20px 0; */
   margin-bottom: 10px;
-  font-size: 1.4em;
+  font-size: 1.8em;
   letter-spacing: 0.9px;
   font-weight: 500;
 }
 
 .travel-buttons {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: stretch;
+  /* flex-direction: column; */
   gap: 20px;
   margin: 15px 0 30px 0;
+  align-items: center;
 }
 
-.travel-grid {
+.btn-travel-prim {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 10px;
+  font-size: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgb(20, 20, 20, 0.15);
+  letter-spacing: 1.2px;
+  color: var(--light-grey);
+  background-color: var(--darker-main-color);
+  text-align: center;
+}
+
+.btn-travel-sec {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 10px;
+  font-size: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgb(20, 20, 20, 0.15);
+  letter-spacing: 1.2px;
+  background-color: var(--light-grey);
+  color: var(--darker-main-color);
+  text-align: center;
+}
+
+.btn-travel-sec .travel-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: space-between;
@@ -399,6 +435,10 @@ FONT SIZE SYSTEM (px)
   /* grid-template-columns: repeat(2, 1fr); */
   row-gap: 30px;
   column-gap: 20px;
+}
+
+.rsvp-card h2 {
+  font-size: 36px;
 }
 
 @media (width >= 600px) {
