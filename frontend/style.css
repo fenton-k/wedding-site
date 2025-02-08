@@ -158,6 +158,7 @@ footer {
 @media (width < 1200px) {
   .body-homepage {
     background-position-x: 50%;
+    background-position-y: 10%;
   }
 
   .content-homepage {
