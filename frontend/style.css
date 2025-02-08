@@ -157,7 +157,7 @@ footer {
 
 @media (width < 1200px) {
   .body-homepage {
-    background-position-x: 60%;
+    background-position-x: 50%;
   }
 
   .content-homepage {
@@ -189,7 +189,7 @@ footer {
     display: grid;
     grid-template-columns: repeat(2m 1fr);
     column-gap: 20px;
-    margin: 20px 30px;
+    margin: 20px 50px;
     text-align: center;
   }
 
