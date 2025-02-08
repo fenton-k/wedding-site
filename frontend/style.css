@@ -157,7 +157,7 @@ footer {
 
 @media (width < 1200px) {
   .body-homepage {
-    background-position-x: 70%;
+    background-position-x: 60%;
   }
 
   .content-homepage {
@@ -179,25 +179,33 @@ footer {
   }
 
   .sub-headline h2 {
-    font-size: 1.5em;
+    font-size: 2em;
+    font-weight: 600;
     margin-top: 30px;
     text-align: center;
   }
 
   .div-buttons-homepage {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2m 1fr);
     column-gap: 20px;
-    margin: 10px 30px;
+    margin: 20px 30px;
     text-align: center;
   }
 
   .a-homepage-prim {
-    grid-column: span 3;
+    grid-column: span 2;
+    color: var(--darker-main-color) !important;
+    background-color: var(--light-grey) !important;
+    font-size: 4em !important;
+  }
+
+  .a-homepage-sec {
+    grid-column: span 2;
   }
 
   .div-buttons-homepage a {
-    font-size: 1em;
+    font-size: 2em;
     color: var(--light-grey);
     background-color: var(--darker-main-color);
     text-decoration: none;
