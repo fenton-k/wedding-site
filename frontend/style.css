@@ -43,6 +43,12 @@ body {
   /* justify-content: space-around; */
 }
 
+.body-homepage {
+  background-image: url(img/beach.jpg);
+  background-position: 50%;
+  background-size: cover;
+}
+
 header {
   min-height: 100px;
 }
@@ -75,14 +81,14 @@ footer {
   /* position: absolute; */
   background-image: url(img/beach.jpg);
   background-position: 85% 35%;
-  height: 600px;
+  height: 400px;
   background-size: 150%;
   padding: 20px 20px 0 20px;
 }
 
 .sub-headline h2 {
   margin: 50px 30px 0 30px;
-  text-align: center;
+  /* text-align: center; */
   font-weight: 500;
   color: var(--black);
   font-size: 30px;
@@ -149,11 +155,98 @@ footer {
   text-align: center;
 }
 
-@media (width >= 600px) {
-  .headline {
-    height: 800px;
-    background-position: 80% 45%;
-    background-size: cover;
+@media (width < 1200px) {
+  .body-homepage {
+    background-position-x: 70%;
+  }
+
+  .content-homepage {
+    margin: 0 auto;
+  }
+
+  .div-names-date {
+    margin-top: 10px;
+  }
+
+  .names {
+    font-size: 2em;
+    text-align: center;
+  }
+
+  .date {
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  .sub-headline h2 {
+    font-size: 1.5em;
+    margin-top: 30px;
+    text-align: center;
+  }
+
+  .div-buttons-homepage {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+    margin: 10px 30px;
+    text-align: center;
+  }
+
+  .a-homepage-prim {
+    grid-column: span 3;
+  }
+
+  .div-buttons-homepage a {
+    font-size: 1em;
+    color: var(--light-grey);
+    background-color: var(--darker-main-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.2s;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 20px;
+  }
+}
+
+@media (width >= 1200px) {
+  .header-homepage {
+    color: var(--light-grey);
+    background-color: var(--darker-main-color);
+    min-height: 60px;
+  }
+
+  .content-homepage {
+    margin-left: 30px;
+  }
+
+  .div-buttons-homepage {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px;
+    text-align: center;
+  }
+
+  .div-buttons-homepage a {
+    font-size: 36px;
+    color: var(--light-grey);
+    background-color: var(--darker-main-color);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.2s;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 20px;
+  }
+
+  .div-buttons-homepage a:hover {
+    /* color: var(--black); */
+    background-color: var(--black);
+    border-radius: 30px;
+  }
+
+  .div-names-date {
+    margin-top: 30px;
   }
 
   .names {
@@ -164,13 +257,25 @@ footer {
     font-size: 62px;
   }
 
+  .sub-headline {
+    max-width: 700px;
+  }
+
+  .sub-headline h2 {
+    margin: 50px 0 20px 0;
+    font-weight: 500;
+    color: var(--black);
+    font-size: 36px;
+    line-height: 1.5;
+  }
+
   .div-buttons {
-    width: 500px;
-    margin: 50px auto !important;
+    width: 650px;
+    margin: 50px 0px 0px 30px !important;
   }
 
   .secondary {
-    font-size: 24px;
+    font-size: 36px;
   }
 
   .primary {
@@ -471,4 +576,8 @@ FONT SIZE SYSTEM (px)
     margin-top: 40px;
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+.div-registry {
+  margin: 0 auto;
 }
