@@ -34,19 +34,36 @@
       </div>
     </header>
     <section id="div-rsvp-content" class="section-subpage">
-      <iframe
-        src="https://docs.google.com/forms/d/e/1FAIpQLSdeHyZmWFd7Eqm4MaeaBU_FvEM4l7Rt6dLiJeyaKsdCL6c29g/viewform?embedded=true"
-        width="640"
-        height="563"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-        >Loading…</iframe
-      >
+      <section id="rsvpFormSection">
+        <h2 class="h2-subpage"><i class="fa-solid fa-envelope"></i> RSVP</h2>
+        <p class="travel-text">
+          Please enter your information below to accept or decline your
+          invitation.
+        </p>
+        <form class="rsvp-form" name="rsvpForm">
+          <div>
+            <label>First name</label>
+            <input class="text-input" name="firstName" />
+          </div>
+          <div>
+            <label>Last name</label>
+            <input class="text-input" name="lastName" />
+          </div>
+          <div>
+            <label>Zip code</label>
+            <input class="text-input zipcode" name="zipcode" />
+          </div>
+          <button class="rsvp-submit" type="button" onclick="rsvpSubmit()">
+            <p>Find my RSVP</p>
+          </button>
+        </form>
+      </section>
     </section>
+    <footer class="footer">
+      <p>copyright &copy 2025 Sophos Websites</p>
+    </footer>
   </body>
   <!-- <footer class="footer">
     <p>copyright &copy 2025 Sophos Websites</p>
   </footer> -->
 </html>
-contribute
